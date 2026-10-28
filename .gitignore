@@ -1,0 +1,13 @@
+.env
+.venv/
+venv/
+node_modules/
+dist/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+data/*.csv
+artifacts/*.joblib
+artifacts/*.json
+*.log
+.DS_Store

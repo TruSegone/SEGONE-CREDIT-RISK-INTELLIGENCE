@@ -1,0 +1,1 @@
+Generated application data is local-only and ignored by Git. Create it with `python -m backend.app.ml.data_generator --n 12000 --output data/applications.csv` from the repository root. No external data download is required.

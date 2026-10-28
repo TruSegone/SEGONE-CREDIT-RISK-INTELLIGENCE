@@ -1,0 +1,20 @@
+services:
+  api:
+    build: ./backend
+    ports: ["8000:8000"]
+    environment:
+      CORS_ORIGINS: http://localhost:8080
+    volumes:
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+  frontend:
+    build: .
+    ports: ["8080:80"]
+    depends_on:
+      api:
+        condition: service_healthy
