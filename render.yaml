@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: segone-credit-risk-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /health
+    envVars:
+      - key: CORS_ORIGINS
+        sync: false

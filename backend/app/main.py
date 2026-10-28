@@ -14,7 +14,9 @@ from pydantic import BaseModel, Field, model_validator
 
 from app.ml.data_generator import EMPLOYMENT, FEATURES, PURPOSES, generate
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+REPOSITORY_ROOT = Path(
+    os.getenv("SEGONE_PROJECT_ROOT", Path(__file__).resolve().parents[2])
+)
 ARTIFACTS_PATH = REPOSITORY_ROOT / "artifacts"
 DATA_PATH = REPOSITORY_ROOT / "data" / "applications.csv"
 DISCLAIMER = (

@@ -77,7 +77,7 @@ Generate and train artifacts locally first, then `docker compose up --build`. Th
 
 ## Deployment
 
-Build the React application for Cloudflare Pages with `frontend` as root and `npm run build`; configure `VITE_API_BASE_URL` as the API URL at build time. Host the Python API in a Python-capable container service. Set production `CORS_ORIGINS` to the exact deployed frontend origin, generate/training artifacts before startup, and deploy API before frontend. No cloud deployment has been performed.
+The repository includes a Render Blueprint for the API and supports Cloudflare Pages for the frontend. The API Docker image trains its reproducible synthetic model during the image build. Follow [docs/deployment.md](docs/deployment.md) to create both services and connect their URLs. The repo is deployment-ready, but no cloud deployment has been performed; viewers need the resulting Pages URL after the services are created.
 
 ## Roadmap
 

@@ -1,6 +1,7 @@
 """Train candidate classifiers and persist the validation-selected pipeline."""
 
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -126,7 +127,11 @@ def holdout_metrics(
 
 def main(n: int = 12_000, seed: int = 42) -> None:
     """Generate/load data, train candidates and save model plus metadata."""
-    repository_root = Path(__file__).resolve().parents[3]
+    # In containers this is set to /app; locally, derive the repository root
+    # from this module's location so the standard commands need no extra config.
+    repository_root = Path(
+        os.getenv("SEGONE_PROJECT_ROOT", Path(__file__).resolve().parents[3])
+    )
     data_path = repository_root / "data" / "applications.csv"
     artifacts_path = repository_root / "artifacts"
     artifacts_path.mkdir(parents=True, exist_ok=True)
